@@ -1,4 +1,4 @@
-import Deck from "./deck";
+import Deck from "./../../deck";
 import Body from "./body";
 
 export default class Player {
