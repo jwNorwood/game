@@ -42,6 +42,9 @@ export default class Player {
   getMaxHealth() {
     return this.maxHealth;
   }
+  isDead() {
+    return this.currentHealth >= 0;
+  }
 
   updateCurrentHealth(currentHealth: integer) {
     this.currentHealth = currentHealth;
