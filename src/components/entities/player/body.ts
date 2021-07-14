@@ -21,38 +21,38 @@ export default class Body {
     this.legs = legs;
   }
 
-  updateLeftArm(left_arm: object) {
+  public updateLeftArm(left_arm: object) {
     this.left_arm = left_arm;
   }
-  getLeftArm(){
+  public getLeftArm(){
     return this.left_arm;
   }
   
-  updateRightArm(right_arm: object) {
+  public updateRightArm(right_arm: object) {
     this.right_arm = right_arm;
   }
-  getRightArm(){
+  public getRightArm(){
     return this.right_arm;
   }
 
-  updateTorso(torso: object) {
+  public updateTorso(torso: object) {
     this.torso = torso;
   }
-  getTorso(){
+  public getTorso(){
     return this.torso;
   }
 
-  updateHead(head: object) {
+  public updateHead(head: object) {
     this.head = head;
   }
-  getHead(){
+  public getHead(){
     return this.head;
   }
 
-  updateLegs(legs: object) {
+  public updateLegs(legs: object) {
     this.legs = legs;
   }
-  geLegs(){
+  public getLegs(){
     return this.legs;
   }
 }

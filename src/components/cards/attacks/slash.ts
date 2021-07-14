@@ -1,12 +1,31 @@
-import Card from "~/components/card";
+import Card from "~/components/cards/card";
 
-// basic attack
+const Slash = new Card({
+  id: 1,
+  name: "Slash",
+  description: "Slashing attack",
+  actionCost: 1,
+  heatCost: 0,
+  rarity: 1,
+  type: "attack",
+  subType: "basic",
+  targetSelf: false,
+  targetEnemy: true,
+  onPlay: (): void => {
+    console.log("we attacked with slash");
+  },
+  onDraw: (): void => {
+    console.log("we attacked with slash");
+  },
+  onShuffle: (): void => {
+    console.log("we attacked with slash");
+  },
+  onConsume: (): void => {
+    console.log("we consumed slash");
+  },
+  onDiscard: (): void => {
+    console.log("we discarded slash");
+  },
+});
 
-// damage = 7
-// cost = 1
-// requires = close quarters
-
-// damage range 
-// under 4, mostly utility
-// 5-8, bread and butter
-// over 9, big damage, heavy cost 
+export default Slash;

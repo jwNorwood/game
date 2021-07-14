@@ -1,4 +1,4 @@
-import Deck from "./../../deck";
+import Deck from "./../../cards/deck";
 import Body from "./body";
 
 export default class Player {
@@ -14,6 +14,7 @@ export default class Player {
 
   public deck: Class;
   public body: Class;
+  public hand: Array<object>;
   
   constructor(
     maxHealth: integer,
@@ -24,6 +25,7 @@ export default class Player {
     heat: integer,
     deck: Array<object>,
     body: any,
+    hand: Array<object>,
   ) {
     this.maxHealth = maxHealth;
     this.currentHealth = currentHealth;
@@ -34,47 +36,70 @@ export default class Player {
     
     this.deck = new Deck(deck);
     this.body = new Body(body);
+    this.hand = hand;
   }
 
-  updateMaxHealth(maxHealth: integer) {
+  public updateMaxHealth(maxHealth: integer) {
     this.maxHealth = maxHealth;
   }
-  getMaxHealth() {
+
+  public getMaxHealth() {
     return this.maxHealth;
   }
-  isDead() {
+
+  public isDead() {
     return this.currentHealth >= 0;
   }
 
-  updateCurrentHealth(currentHealth: integer) {
+  public updateCurrentHealth(currentHealth: integer) {
     this.currentHealth = currentHealth;
   }
-  getCurrentHealth() {
+
+  public getCurrentHealth() {
     return this.currentHealth;
   }
 
-  updateHeat(heat: integer) {
+  public updateHeat(heat: integer) {
     this.heat = heat;
   }
-  getHeat() {
+
+  public getHeat() {
     return this.heat;
   }
 
-  updateCash(cash: integer) {
+  public updateCash(cash: integer) {
     this.cash = cash;
   }
-  getCash() {
+
+  public getCash() {
     return this.cash;
   }
 
-  updateCredits(credits: integer) {
+  public updateCredits(credits: integer) {
     this.credits = credits;
   }
-  getCredits() {
+
+  public getCredits() {
     return this.credits;
   }
 
-  getModel() {
+  public getModel() {
     return this.model;
+  }
+
+  public updateModel(model: string) {
+    this.model = model;
+  }
+
+  public getDeck() {
+    return this.deck;
+  }
+
+  public getBody() {
+    return this.body;
+  }
+
+  public getCardCountInHand() {
+    return this.hand.length;
   }
 }
