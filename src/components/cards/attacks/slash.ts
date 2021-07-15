@@ -18,7 +18,7 @@ const Slash = new Card({
     console.log("we attacked with slash");
   },
   onShuffle: (): void => {
-    console.log("we attacked with slash");
+    console.log("we shuffled in slash");
   },
   onConsume: (): void => {
     console.log("we consumed slash");

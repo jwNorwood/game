@@ -2,13 +2,21 @@ interface CardInterface {
   id: integer;
   name: string;
   description: string;
+  
   actionCost: integer;
   heatCost: integer;
+
   rarity: integer;
+
   type: string;
   subType: string;
+
   targetSelf: boolean;
   targetEnemy: boolean;
+
+  imagePath: string;
+  playAudio: string;
+  playAnimation: string;
 
   onPlay: Function;
   onDraw: Function;

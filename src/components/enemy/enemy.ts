@@ -16,11 +16,27 @@ export default class Enemy {
   currentHealth: integer;
   maxHealth: integer;
 
-  updateMaxHealth(maxHealth: integer) {
-    this.maxHealth = maxHealth;
-  }
-
   updateCurrentHealth(currentHealth: integer) {
     this.currentHealth = currentHealth;
+  }
+
+  takeDamage(damage: integer) {
+    this.currentHealth -= damage;
+  }
+
+  isAlive(): boolean {
+    return this.currentHealth > 0;
+  }
+
+  isDead(): boolean {
+    return !this.isAlive();
+  }
+
+  getHealthPercentage(): number {
+    return this.currentHealth / this.maxHealth;
+  }
+
+  getHealthPercentageAsString(): string {
+    return `${this.getHealthPercentage() * 100}%`;
   }
 }

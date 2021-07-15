@@ -1,22 +1,33 @@
-// generate rewards ( Cards , Mods , Gold )
-// based on encounter type ( normal / miniboss / boss / special )
+import modList from "../mods/modsList";
+import cardsList from "../cards/cardsList";
 
-export const generateRewards = ( cards: integer, mods: integer, gold: integer, valueMod: integer) => {
-  let cardReward = getCards(cards, valueMod);
-  let modReward = getMods(mods, valueMod);
-  let goldReward = generateGold(gold, valueMod);
-  return { 'cards': cardReward, 'mods': modReward , 'gold': goldReward };
+function generateCurrency(currency: any, valueMod: any) {
+  return Math.floor(Math.random() * (currency * valueMod));
 }
 
 function getCards(cards: any, valueMod: any) {
   throw new Error("Function not implemented.");
 }
 
-function getMods(mods: any, valueMod: any) {
-  throw new Error("Function not implemented.");
+function getItemFromList(list: any, numOfItems: number, valueMod: any) {
+  let listLength = list.length;
+  let itemIndexes: any[] = [];
+  let selectedItems: any[] = [];
+
+  while (selectedItems.length < numOfItems) {
+    let randomIndex = Math.floor(Math.random() * listLength);
+    let randomItem = list[randomIndex];
+    
+    if (itemIndexes.indexOf(randomIndex) === -1) {
+      itemIndexes.push(randomIndex);
+      selectedItems.push(randomItem);
+    } 
+  }
 }
 
-function generateGold(gold: any, valueMod: any) {
-  // return a random number with a modifier
-  throw new Error("Function not implemented.");
-}
+export const generateRewards = ( cards: integer, mods: integer, currency: integer, valueMod: integer) => {
+  let cardReward = getItemFromList(cardsList, cards, valueMod);
+  let modReward = getItemFromList(modList, mods, valueMod);
+  let currencyReward = generateCurrency(currency, valueMod);
+  return { 'cards': cardReward, 'mods': modReward , 'currency': currencyReward };
+};
