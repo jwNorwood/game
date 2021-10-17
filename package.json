@@ -26,7 +26,10 @@
 	},
 	"dependencies": {
 		"@reduxjs/toolkit": "^1.6.2",
-		"phaser": "^3.50.1"
+		"phaser": "^3.50.1",
+		"phaser3-rex-plugins": "^1.1.61",
+		"react": "^16.14.0 || ^17.0.0",
+		"react-redux": "^7.2.1"
 	},
 	"parcelCleanPaths": [
 		"dist"
