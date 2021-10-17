@@ -1,41 +1,29 @@
-import Phaser from 'phaser'
-import store  from "../components/system/store"
+import Phaser from "phaser";
+import store from "../components/system/store";
+import Button from "../components/ui/Button";
 
-export default class HelloWorldScene extends Phaser.Scene
-{
-	constructor()
-	{
-		super('hello-world')
-        console.log("Hello World!", store.getState())
-	}
+export default class HelloWorldScene extends Phaser.Scene {
+  constructor() {
+    super("hello-world");
+    console.log("Hello World Scene");
+  }
 
-	preload()
-    {
-        this.load.setBaseURL('http://labs.phaser.io')
+  preload() {
+    this.load.setBaseURL("http://labs.phaser.io");
+  }
 
-        this.load.image('sky', 'assets/skies/space3.png')
-        this.load.image('logo', 'assets/sprites/phaser3-logo.png')
-        this.load.image('red', 'assets/particles/red.png')
-    }
+  create() {
+    console.log(store.getState());
+    const centerX = this.cameras.main.width / 2;
+    const centerY = this.cameras.main.height / 2;
 
-    create()
-    {
-        this.add.image(400, 300, 'sky')
+    const title = this.add.text(centerX, 50, "Hello World??", {
+      fontSize: "50px",
+      color: "#ffffff",
+    }).setOrigin(0.5);
 
-        const particles = this.add.particles('red')
-
-        const emitter = particles.createEmitter({
-            speed: 100,
-            scale: { start: 1, end: 0 },
-            blendMode: 'ADD'
-        })
-
-        const logo = this.physics.add.image(400, 100, 'logo')
-
-        logo.setVelocity(100, 200)
-        logo.setBounce(1, 1)
-        logo.setCollideWorldBounds(true)
-
-        emitter.startFollow(logo)
-    }
+    const backButton = new Button(75, 50, "Back", this, () =>
+      this.scene.switch("main")
+    );
+  }
 }
