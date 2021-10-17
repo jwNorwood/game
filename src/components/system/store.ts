@@ -5,13 +5,15 @@ import pilotReducer from "../entities/player/pilotSlice";
 import gameReducer from "./reducer/gameSlice";
 import deckReducer from "../cards/deckSlice";
 import handReducer from "../cards/handSlice";
+import settingsReducer from "./reducer/settingsSlice";
 
 const store = configureStore({
   reducer: {
+    settings: settingsReducer,
+    game: gameReducer,
     ship: shipSlice,
     pilot: pilotReducer,
     enemy: enemyReducer,
-    game: gameReducer,
     deck: deckReducer,
     hand: handReducer,
   },

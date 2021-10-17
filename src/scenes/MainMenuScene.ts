@@ -20,10 +20,9 @@ export default class MainMenuScene extends Phaser.Scene {
       fontSize: "50px",
       color: "#ffffff",
     }).setOrigin(0.5);
-   
 
     const continueGame = new Button(centerX, centerY - 65, "Continue Game", this, () =>
-      console.log("Continue Game")
+      this.scene.switch("hello-world")
     );
     const start = new Button(centerX, centerY, "Start Game", this, () =>
       this.scene.switch("hello-world")

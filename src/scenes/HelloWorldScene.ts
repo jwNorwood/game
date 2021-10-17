@@ -1,11 +1,16 @@
 import Phaser from "phaser";
 import store from "../components/system/store";
 import Button from "../components/ui/Button";
+import cardsList from "~/components/cards/cardsList";
+
+// do some messing around in here
+// updating the store
 
 export default class HelloWorldScene extends Phaser.Scene {
   constructor() {
     super("hello-world");
     console.log("Hello World Scene");
+    console.log(cardsList);
   }
 
   preload() {
