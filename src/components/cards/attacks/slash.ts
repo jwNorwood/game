@@ -11,6 +11,9 @@ const Slash = new Card({
   subType: "basic",
   targetSelf: false,
   targetEnemy: true,
+  imagePath: "assets/cards/slash.png",
+  playAudio: "assets/audio/slash.mp3",
+  playAnimation: "slash",
   onPlay: (): void => {
     console.log("we attacked with slash");
   },

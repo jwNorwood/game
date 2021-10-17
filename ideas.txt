@@ -1,0 +1,36 @@
+mech
+
+parts
+can be damaged
+can be upgraded
+can be damaged
+
+tied to 
+attacks
+abilities
+stats
+
+attacks
+abilities
+
+mech types
+tank
+swift
+normal
+
+pilot
+various traits
+bonus
+specialties
+
+things build heat
+others exhaust heat
+
+other resource (action points)
+
+
+CARDS
+Folder with all the CARDS
+returns card with all the stuffs
+
+json with ids that points to all the folder

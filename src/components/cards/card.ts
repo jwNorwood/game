@@ -1,4 +1,4 @@
-interface CardInterface {
+export default interface CardInterface {
   id: integer;
   name: string;
   description: string;
@@ -77,52 +77,4 @@ export default class Card {
     this.type = type;
     this.subType = subType;
   }
-  
-  getName(): string {
-    return this.name;
-  }
-
-  getDescription(): string {
-    return this.description;
-  }
-
-  getActionCost(): integer {
-    return this.actionCost;
-  }
-
-  getHeatCost(): integer {
-    return this.heatCost;
-  }
-
-  getRarity(): integer {
-    return this.rarity;
-  }
-
-  getId(): integer {
-    return this.id;
-  }
-  
-  getOnPlay(): Function {
-    return this.onPlay;
-  }
-
-  getOnDraw(): Function {
-    return this.onDraw;
-  }
-
-  getOnShuffle(): Function {
-    return this.onShuffle;
-  }
-
-  getOnConsume(): Function {
-    return this.onConsume;
-  }
-
-  canTargetSelf(): boolean {
-    return this.targetSelf;
-  }
-
-  canTargetEnemy(): boolean {  
-    return this.targetEnemy;
-  }  
 }

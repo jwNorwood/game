@@ -1,10 +1,12 @@
 import Phaser from 'phaser'
+import store  from "../components/system/store"
 
 export default class HelloWorldScene extends Phaser.Scene
 {
 	constructor()
 	{
 		super('hello-world')
+        console.log("Hello World!", store.getState())
 	}
 
 	preload()

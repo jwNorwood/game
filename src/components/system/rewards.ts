@@ -5,10 +5,6 @@ function generateCurrency(currency: any, valueMod: any) {
   return Math.floor(Math.random() * (currency * valueMod));
 }
 
-function getCards(cards: any, valueMod: any) {
-  throw new Error("Function not implemented.");
-}
-
 function getItemFromList(list: any, numOfItems: number, valueMod: any) {
   let listLength = list.length;
   let itemIndexes: any[] = [];
@@ -17,7 +13,7 @@ function getItemFromList(list: any, numOfItems: number, valueMod: any) {
   while (selectedItems.length < numOfItems) {
     let randomIndex = Math.floor(Math.random() * listLength);
     let randomItem = list[randomIndex];
-    
+
     if (itemIndexes.indexOf(randomIndex) === -1) {
       itemIndexes.push(randomIndex);
       selectedItems.push(randomItem);
