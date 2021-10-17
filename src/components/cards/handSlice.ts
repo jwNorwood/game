@@ -1,15 +1,15 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import CardInterface from './card';
 
-export interface DeckInterface {
+export interface HandInterface {
   cards: CardInterface[];
 }
 
-export const initialState: DeckInterface = {
+export const initialState: HandInterface = {
   cards: [] as CardInterface[],
 };
 
-export const deckSlice = createSlice({
+export const handSlice = createSlice({
   name: 'deck',
   initialState,
   reducers: {
@@ -17,15 +17,9 @@ export const deckSlice = createSlice({
       state.cards.push(action.payload);
     },
     removeCard: (state, action: PayloadAction<CardInterface>) => {
-      state.cards = state.cards.filter(card => card.id !== action.payload.id);
-    },
-    shuffleDeck: (state) => {
-      state.cards = state.cards.sort(() => Math.random() - 0.5);
-    },
-    drawCard: (state) => {
-      state.cards.pop();
+      state.cards = state.cards.filter((card) => card.id !== action.payload.id);
     },
   }
 });
 
-export default deckSlice.reducer;
+export default handSlice.reducer;

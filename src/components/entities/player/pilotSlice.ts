@@ -1,17 +1,17 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export interface PilotState {
-  id: string;
+  id: number;
   name: string;
   currentHeath: number;
   maxHealth: number;
 }
 
 export const initialState: PilotState = {
-  id: '',
-  name: '',
-  currentHeath: 0,
-  maxHealth: 0,
+  id: 1,
+  name: 'Stan McMan',
+  currentHeath: 100,
+  maxHealth: 100,
 };
 
 export const pilotSlice = createSlice({

@@ -1,15 +1,19 @@
 import { configureStore } from "@reduxjs/toolkit";
-import playerReducer from "../entities/player/playerSlice";
+import shipSlice from "../entities/player/shipSlice";
 import enemyReducer from "../entities/enemy/enemySlice";
 import pilotReducer from "../entities/player/pilotSlice";
 import gameReducer from "./reducer/gameSlice";
+import deckReducer from "../cards/deckSlice";
+import handReducer from "../cards/handSlice";
 
 const store = configureStore({
   reducer: {
-    player: playerReducer,
+    ship: shipSlice,
     pilot: pilotReducer,
-    game: gameReducer,
     enemy: enemyReducer,
+    game: gameReducer,
+    deck: deckReducer,
+    hand: handReducer,
   },
 });
 
