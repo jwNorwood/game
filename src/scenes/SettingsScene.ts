@@ -1,6 +1,5 @@
 import Phaser from "phaser";
 import store from "../components/system/store";
-import Button from "../components/ui/Button";
 import createButton from "~/components/ui/createButton";
 
 export default class SettingsScene extends Phaser.Scene {
