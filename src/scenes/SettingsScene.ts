@@ -1,6 +1,7 @@
 import Phaser from "phaser";
 import store from "../components/system/store";
 import Button from "../components/ui/Button";
+import createButton from "~/components/ui/createButton";
 
 export default class SettingsScene extends Phaser.Scene {
   constructor() {
@@ -10,30 +11,52 @@ export default class SettingsScene extends Phaser.Scene {
 
   preload() {
     this.load.setBaseURL("http://labs.phaser.io");
+    this.load.scenePlugin({
+      key: "rexuiplugin",
+      url: "https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexuiplugin.min.js",
+      sceneKey: "rexUI",
+    });
   }
 
   create() {
     const centerX = this.cameras.main.width / 2;
     const centerY = this.cameras.main.height / 2;
 
-    const title = this.add.text(centerX, 50, "Game Settings", {
-      fontSize: "50px",
-      color: "#ffffff",
-    }).setOrigin(0.5);
-   
-
-    const continueGame = new Button(75, centerY - 65, "Option 1", this, () =>
-      console.log("Continue Game")
-    );
-    const start = new Button(75, centerY, "Option 2", this, () =>
-      console.log("Continue Game")
-    );
-    const settings = new Button(75, centerY + 65, "Option 3", this, () =>
-      console.log("Game Settings")
-    );
-
-    const backButton = new Button(75, 50, "Back", this, () =>
-      this.scene.switch("main")
-    );
+    const title = this.add
+      .text(centerX, 50, "Game Settings", {
+        fontSize: "50px",
+        color: "#ffffff",
+      })
+      .setOrigin(0.5);
+    backButton(this, 60, 50);
   }
+}
+
+const backButton = (scene, x, y) => {
+  const expand = true;
+  const back = scene.rexUI.add
+    .buttons({
+      x: x,
+      y: y,
+      width: 100,
+      orientation: "y",
+
+      buttons: [
+        createButton(scene, "Back"),
+      ],
+
+      space: {
+        left: 10,
+        right: 10,
+        top: 20,
+        bottom: 20,
+        item: 20,
+      },
+      expand: expand,
+    })
+    .layout();
+
+  back.on("button.click", (button, index) => {
+    scene.scene.switch("main")
+  });
 }

@@ -1,7 +1,9 @@
 import Phaser from "phaser";
 
+import RexUIPlugin from 'phaser3-rex-plugins/templates/ui/ui-plugin.js';
+
 import MainMenuScene from "./scenes/MainMenuScene";
-import HelloWorldScene from "./scenes/HelloWorldScene";
+import GameScene from "./scenes/GameScene";
 import SettingsScene from "./scenes/SettingsScene";
 
 const config: Phaser.Types.Core.GameConfig = {
@@ -14,7 +16,16 @@ const config: Phaser.Types.Core.GameConfig = {
       gravity: { y: 200 },
     },
   },
-  scene: [MainMenuScene, HelloWorldScene, SettingsScene],
+  plugins: {
+    scene: [
+      {
+        key: 'rexUI',
+        plugin: RexUIPlugin,
+        mapping: 'rexUI'
+      },
+    ],
+  },
+  scene: [MainMenuScene, GameScene, SettingsScene],
 };
 
 export default new Phaser.Game(config);
