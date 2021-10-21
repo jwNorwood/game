@@ -24,16 +24,23 @@ export default class GameScene extends Phaser.Scene {
     console.log(store.getState());
     const centerX = this.cameras.main.width / 2;
     const centerY = this.cameras.main.height / 2;
-
-    const card = createCard(this, cardsList[0])
-      .setMinWidth(300)
-      .layout()
-      .setPosition(400, 300)
-
-    card.on("pointerdown", () => {
-      console.log("clicked", card.data.get("card"));
-    });
+    //random card from cardsList
     
+    const cards = [] as any[];  
+    
+    for (let i = 0; i < 3; i++) {
+      const randomCard = cardsList[Math.floor(Math.random() * cardsList.length)];
+      const card = createCard(this, randomCard)
+        .layout()
+        .setPosition(200 + ((i * 200) + 20), 300 );
+
+      card.on("pointerdown", () => {
+        console.log("clicked", card.data.get("card"));
+      });
+
+      cards.push(card);
+    }
+      
     const title = this.add
       .text(centerX, 50, "Hello World??", {
         fontSize: "50px",

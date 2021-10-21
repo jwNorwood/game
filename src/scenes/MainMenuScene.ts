@@ -40,7 +40,6 @@ const nav = (scene, x, y) => {
       orientation: "y",
 
       buttons: [
-        createButton(scene, "Continue Game"),
         createButton(scene, "Start Game"),
         createButton(scene, "Game Settings"),
       ],
@@ -57,11 +56,11 @@ const nav = (scene, x, y) => {
     .layout();
 
   navagation.on("button.click", (button, index) => {
-    console.log(`Button ${index} clicked`);
-    if (index === 0 || index === 1) {
+    if (index === 0 ) {
       scene.scene.switch("game")
     }
-    if (index === 2) {
+    if (index === 1) {
       scene.scene.switch("settings")
+    }
   });
 }

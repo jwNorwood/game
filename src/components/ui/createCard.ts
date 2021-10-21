@@ -4,6 +4,7 @@ const createCard = (scene, card) => {
     space: { left: 20, right: 20, top: 20, bottom: 20, item: 25 },
     draggable: true,
     sizerEvents: true,
+    minWidth: 300,
   });
   
   makeCard
