@@ -27,7 +27,7 @@ export const settingsSlice = createSlice({
     setEffectsVolume: (state, action: PayloadAction<number>) => {
       state.effectsVolume = action.payload;
     },
-    setMute: (state, action: PayloadAction<boolean>) => {
+    setMuted: (state, action: PayloadAction<boolean>) => {
       state.isMuted = action.payload;
     },    
   }
