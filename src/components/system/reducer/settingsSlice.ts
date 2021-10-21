@@ -8,9 +8,9 @@ export interface SettingsState {
 }
 
 export const initialState: SettingsState = {
-  masterVolume: 100,
-  musicVolume: 100,
-  effectsVolume: 100,
+  masterVolume: 1,
+  musicVolume: 1,
+  effectsVolume: 1,
   isMuted: false,
 };
 

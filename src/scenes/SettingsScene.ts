@@ -28,10 +28,49 @@ export default class SettingsScene extends Phaser.Scene {
       })
       .setOrigin(0.5);
     backButton(this, 60, 50);
+    addSlider(
+      this,
+      50,
+      200,
+      (value: number) => {
+        store.dispatch({
+          type: "settings/setMasterVolume",
+          payload: value,
+        });
+      },
+      "Master Volume",
+      store.getState().settings.masterVolume
+    );
+    addSlider(
+      this,
+      50,
+      300,
+      (value: number) => {
+        store.dispatch({
+          type: "settings/setMusicVolume",
+          payload: value,
+        });
+      },
+      "Music Volume",
+      store.getState().settings.musicVolume
+    );
+    addSlider(
+      this,
+      50,
+      400,
+      (value: number) => {
+        store.dispatch({
+          type: "settings/setEffectsVolume",
+          payload: value,
+        });
+      },
+      "Effects Volume",
+      store.getState().settings.effectsVolume
+    );
   }
 }
 
-const backButton = (scene, x, y) => {
+const backButton = (scene: any, x: number, y: number) => {
   const expand = true;
   const back = scene.rexUI.add
     .buttons({
@@ -40,9 +79,7 @@ const backButton = (scene, x, y) => {
       width: 100,
       orientation: "y",
 
-      buttons: [
-        createButton(scene, "Back"),
-      ],
+      buttons: [createButton(scene, "Back")],
 
       space: {
         left: 10,
@@ -55,7 +92,54 @@ const backButton = (scene, x, y) => {
     })
     .layout();
 
-  back.on("button.click", (button, index) => {
-    scene.scene.switch("main")
+  back.on("button.click", (button: any, index: any) => {
+    scene.scene.switch("main");
   });
-}
+};
+
+const addSlider = (
+  scene: any,
+  x: number,
+  y: number,
+  updateValue: Function,
+  label: string,
+  initValue: number
+) => {
+  scene.rexUI.add
+    .slider({
+      anchor: {
+        left: `left+${x}`,
+      },
+      y: y,
+      width: 300,
+      height: 30,
+      orientation: "x",
+
+      track: scene.rexUI.add.roundRectangle(0, 0, 0, 0, 10, 0x8e382e),
+      indicator: scene.rexUI.add.roundRectangle(0, 0, 0, 0, 10, 0x4e342e),
+      thumb: scene.rexUI.add.roundRectangle(0, 0, 0, 0, 10, 0x4e342e),
+
+      input: "click", // 'drag'|'click'
+      easeValue: { duration: 250 },
+      value: initValue || 0,
+
+      valuechangeCallback: function (value: any) {
+        updateValue(value);
+      },
+    })
+    .layout();
+
+  scene.rexUI.add.label({
+    text: scene.add.text(400, y - 10, label, {
+      fontSize: 18,
+    }),
+    space: {
+      left: 10,
+      right: 10,
+      top: 20,
+      bottom: 20,
+    },
+
+    align: "center",
+  });
+};
